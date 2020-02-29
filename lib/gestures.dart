@@ -3,8 +3,8 @@ import 'package:flutter/gestures.dart';
 mixin TapDetector {
   void onTap() {}
   void onTapCancel() {}
-  void onTapDown(TapDownDetails details) {}
-  void onTapUp(TapUpDetails details) {}
+  void onTapDown(int pointer, TapDownDetails details) {}
+  void onTapUp(int pointerId, TapUpDetails details) {}
 }
 
 mixin SecondaryTapDetector {

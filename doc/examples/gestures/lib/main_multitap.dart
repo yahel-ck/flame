@@ -12,20 +12,25 @@ class MyGame extends Game with TapDetector {
 
   Paint _paint;
 
-  List<Rect> _taps = [];
+  final Map<int, Rect> _taps = {};
 
   MyGame() {
     _paint = _whitePaint;
   }
 
   @override
-  void onTapDown(TapDownDetails details) {
-    _taps.add(Rect.fromLTWH(
-            details.globalPosition.dx,
-            details.globalPosition.dy,
-            50,
-            50)
+  void onTapDown(int pointerId, TapDownDetails details) {
+    _taps[pointerId] = Rect.fromLTWH(
+        details.globalPosition.dx,
+        details.globalPosition.dy,
+        50,
+        50
     );
+  }
+
+  @override
+  void onTapUp(int pointerId, _) {
+    _taps.remove(pointerId);
   }
 
   @override
@@ -33,7 +38,7 @@ class MyGame extends Game with TapDetector {
 
   @override
   void render(Canvas canvas) {
-    _taps.forEach((rect) {
+    _taps.values.forEach((rect) {
       canvas.drawRect(rect, _paint);
     });
   }

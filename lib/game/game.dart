@@ -126,12 +126,13 @@ abstract class BaseGame extends Game with TapDetector {
   }
 
   @override
-  void onTapDown(TapDownDetails details) {
+  void onTapDown(int pointer, TapDownDetails details) {
     _tapableComponents.forEach((c) => c.handleTapDown(details));
   }
 
   @override
-  void onTapUp(TapUpDetails details) {
+  void onTapUp(int pointer, TapUpDetails details) {
+    // TODO tapables should handle id as well right?
     _tapableComponents.forEach((c) => c.handleTapUp(details));
   }
 
