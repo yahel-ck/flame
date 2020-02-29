@@ -15,3 +15,7 @@ android/
 ios/
 desktop/
 build/
+web/
+
+.flutter-plugins-dependencies
+generated_plugin_registrant.dart
