@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flame/components/mixins/has_game_ref.dart';
 import 'package:flame/components/mixins/tapable.dart';
 import 'package:flame/game.dart';
 import 'package:ordered_set/comparing.dart';
@@ -37,7 +36,7 @@ import 'mixins/resizable.dart';
 /// }
 /// ```
 ///
-mixin ComposedComponent on Component, HasGameRef, Tapable {
+mixin ComposedComponent<GameClass extends BaseGame> on Component<GameClass>, Tapable {
   OrderedSet<Component> components =
       OrderedSet(Comparing.on((c) => c.priority()));
 
@@ -62,7 +61,7 @@ mixin ComposedComponent on Component, HasGameRef, Tapable {
 
   void add(Component c) {
     if (gameRef is BaseGame) {
-      (gameRef as BaseGame).preAdd(c);
+      gameRef.preAdd(c);
     }
     components.add(c);
   }

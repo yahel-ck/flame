@@ -22,11 +22,11 @@ class WidgetBuilder {
       // Secondary taps
       onSecondaryTapDown: game is SecondaryTapDetector
           ? (TapDownDetails d) =>
-              (game as SecondaryTapDetector).onSecondaryTapDown(d)
+          (game as SecondaryTapDetector).onSecondaryTapDown(d)
           : null,
       onSecondaryTapUp: game is SecondaryTapDetector
           ? (TapUpDetails d) =>
-              (game as SecondaryTapDetector).onSecondaryTapUp(d)
+          (game as SecondaryTapDetector).onSecondaryTapUp(d)
           : null,
       onSecondaryTapCancel: game is SecondaryTapDetector
           ? () => (game as SecondaryTapDetector).onSecondaryTapCancel()
@@ -43,36 +43,36 @@ class WidgetBuilder {
           : null,
       onLongPressStart: game is LongPressDetector
           ? (LongPressStartDetails d) =>
-              (game as LongPressDetector).onLongPressStart(d)
+          (game as LongPressDetector).onLongPressStart(d)
           : null,
       onLongPressMoveUpdate: game is LongPressDetector
           ? (LongPressMoveUpdateDetails d) =>
-              (game as LongPressDetector).onLongPressMoveUpdate(d)
+          (game as LongPressDetector).onLongPressMoveUpdate(d)
           : null,
       onLongPressUp: game is LongPressDetector
           ? () => (game as LongPressDetector).onLongPressUp()
           : null,
       onLongPressEnd: game is LongPressDetector
           ? (LongPressEndDetails d) =>
-              (game as LongPressDetector).onLongPressEnd(d)
+          (game as LongPressDetector).onLongPressEnd(d)
           : null,
 
       // Vertical drag
       onVerticalDragDown: game is VerticalDragDetector
           ? (DragDownDetails d) =>
-              (game as VerticalDragDetector).onVerticalDragDown(d)
+          (game as VerticalDragDetector).onVerticalDragDown(d)
           : null,
       onVerticalDragStart: game is VerticalDragDetector
           ? (DragStartDetails d) =>
-              (game as VerticalDragDetector).onVerticalDragStart(d)
+          (game as VerticalDragDetector).onVerticalDragStart(d)
           : null,
       onVerticalDragUpdate: game is VerticalDragDetector
           ? (DragUpdateDetails d) =>
-              (game as VerticalDragDetector).onVerticalDragUpdate(d)
+          (game as VerticalDragDetector).onVerticalDragUpdate(d)
           : null,
       onVerticalDragEnd: game is VerticalDragDetector
           ? (DragEndDetails d) =>
-              (game as VerticalDragDetector).onVerticalDragEnd(d)
+          (game as VerticalDragDetector).onVerticalDragEnd(d)
           : null,
       onVerticalDragCancel: game is VerticalDragDetector
           ? () => (game as VerticalDragDetector).onVerticalDragCancel()
@@ -81,19 +81,19 @@ class WidgetBuilder {
       // Horizontal drag
       onHorizontalDragDown: game is HorizontalDragDetector
           ? (DragDownDetails d) =>
-              (game as HorizontalDragDetector).onHorizontalDragDown(d)
+          (game as HorizontalDragDetector).onHorizontalDragDown(d)
           : null,
       onHorizontalDragStart: game is HorizontalDragDetector
           ? (DragStartDetails d) =>
-              (game as HorizontalDragDetector).onHorizontalDragStart(d)
+          (game as HorizontalDragDetector).onHorizontalDragStart(d)
           : null,
       onHorizontalDragUpdate: game is HorizontalDragDetector
           ? (DragUpdateDetails d) =>
-              (game as HorizontalDragDetector).onHorizontalDragUpdate(d)
+          (game as HorizontalDragDetector).onHorizontalDragUpdate(d)
           : null,
       onHorizontalDragEnd: game is HorizontalDragDetector
           ? (DragEndDetails d) =>
-              (game as HorizontalDragDetector).onHorizontalDragEnd(d)
+          (game as HorizontalDragDetector).onHorizontalDragEnd(d)
           : null,
       onHorizontalDragCancel: game is HorizontalDragDetector
           ? () => (game as HorizontalDragDetector).onHorizontalDragCancel()
@@ -102,19 +102,19 @@ class WidgetBuilder {
       // Force presses
       onForcePressStart: game is ForcePressDetector
           ? (ForcePressDetails d) =>
-              (game as ForcePressDetector).onForcePressStart(d)
+          (game as ForcePressDetector).onForcePressStart(d)
           : null,
       onForcePressPeak: game is ForcePressDetector
           ? (ForcePressDetails d) =>
-              (game as ForcePressDetector).onForcePressPeak(d)
+          (game as ForcePressDetector).onForcePressPeak(d)
           : null,
       onForcePressUpdate: game is ForcePressDetector
           ? (ForcePressDetails d) =>
-              (game as ForcePressDetector).onForcePressUpdate(d)
+          (game as ForcePressDetector).onForcePressUpdate(d)
           : null,
       onForcePressEnd: game is ForcePressDetector
           ? (ForcePressDetails d) =>
-              (game as ForcePressDetector).onForcePressEnd(d)
+          (game as ForcePressDetector).onForcePressEnd(d)
           : null,
 
       // Pan
@@ -146,10 +146,12 @@ class WidgetBuilder {
           : null,
 
       child: Container(
-          color: game.backgroundColor(),
-          child: Directionality(
-              textDirection: TextDirection.ltr,
-              child: EmbeddedGameWidget(game))),
+        color: game.backgroundColor(),
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: EmbeddedGameWidget(game),
+        ),
+      ),
     );
   }
 }
@@ -186,7 +188,7 @@ class _OverlayGameWidgetState extends State<OverlayGameWidget> {
     return Directionality(
         textDirection: TextDirection.ltr,
         child:
-            Stack(children: [widget.gameChild, ..._overlays.values.toList()]));
+        Stack(children: [widget.gameChild, ..._overlays.values.toList()]));
   }
 }
 

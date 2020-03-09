@@ -11,7 +11,6 @@ import 'package:ordered_set/comparing.dart';
 import 'package:ordered_set/ordered_set.dart';
 
 import '../components/component.dart';
-import '../components/mixins/has_game_ref.dart';
 import '../components/mixins/tapable.dart';
 import '../position.dart';
 import '../gestures.dart';
@@ -150,9 +149,7 @@ abstract class BaseGame extends Game with TapDetector {
       c.resize(size);
     }
 
-    if (c is HasGameRef) {
-      (c as HasGameRef).gameRef = this;
-    }
+    c.gameRef = this;
 
     if (c is ComposedComponent) {
       c.components.forEach(preAdd);

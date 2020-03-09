@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flame/components/composed_component.dart';
-import 'package:flame/components/mixins/has_game_ref.dart';
 import 'package:flame/components/mixins/resizable.dart';
 import 'package:flame/components/mixins/tapable.dart';
 import 'package:flutter/gestures.dart';
@@ -30,7 +29,7 @@ class MyTap extends PositionComponent with Tapable, Resizable {
   bool checkTapOverlap(Offset o) => true;
 }
 
-class MyComposed extends Component with HasGameRef, Tapable, ComposedComponent {
+class MyComposed extends Component with Tapable, ComposedComponent {
   @override
   void update(double dt) {}
 

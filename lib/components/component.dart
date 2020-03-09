@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:flame/game.dart';
 import 'package:flutter/painting.dart';
 
 import '../svg.dart';
@@ -14,7 +15,7 @@ import '../text_config.dart';
 /// Components can be bullets flying on the screen, a spaceship or your player's fighter.
 /// Anything that either renders or updates can be added to the list on [BaseGame]. It will deal with calling those methods for you.
 /// Components also have other methods that can help you out if you want to overwrite them.
-abstract class Component {
+abstract class Component<GameClass extends BaseGame> {
   /// This method is called periodically by the game engine to request that your component updates itself.
   ///
   /// The time [t] in seconds (with microseconds precision provided by Flutter) since the last update cycle.
@@ -54,13 +55,15 @@ abstract class Component {
   /// It can be any integer (negative, zero, or positive).
   /// If two components share the same priority, they will probably be drawn in the order they were added.
   int priority() => 0;
+
+  GameClass gameRef;
 }
 
 /// A [Component] implementation that represents a component that has a specific, possibly dynamic position on the screen.
 ///
 /// It represents a rectangle of dimension ([width], [height]), on the position ([x], [y]), rotate around its center with angle [angle].
 /// It also uses the [anchor] property to properly position itself.
-abstract class PositionComponent extends Component {
+abstract class PositionComponent<GameClass extends BaseGame> extends Component<GameClass> {
   double x = 0.0, y = 0.0, angle = 0.0;
   double width = 0.0, height = 0.0;
   Anchor anchor = Anchor.topLeft;
